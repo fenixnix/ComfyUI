@@ -524,6 +524,7 @@ class CheckpointLoader:
     def load_checkpoint(self, config_name, ckpt_name, output_vae=True, output_clip=True):
         config_path = folder_paths.get_full_path("configs", config_name)
         ckpt_path = folder_paths.get_full_path("checkpoints", ckpt_name)
+        ckpt_path = ckpt_path.replace("\\","/")
         return comfy.sd.load_checkpoint(config_path, ckpt_path, output_vae=True, output_clip=True, embedding_directory=folder_paths.get_folder_paths("embeddings"))
 
 class CheckpointLoaderSimple:
